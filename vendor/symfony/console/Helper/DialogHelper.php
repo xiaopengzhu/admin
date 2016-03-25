@@ -31,7 +31,7 @@ class DialogHelper extends InputAwareHelper
     public function __construct($triggerDeprecationError = true)
     {
         if ($triggerDeprecationError) {
-            trigger_error('"Symfony\Component\Console\Helper\DialogHelper" is deprecated since version 2.5 and will be removed in 3.0. Use "Symfony\Component\Console\Helper\QuestionHelper" instead.', E_USER_DEPRECATED);
+            @trigger_error('"Symfony\Component\Console\Helper\DialogHelper" is deprecated since version 2.5 and will be removed in 3.0. Use "Symfony\Component\Console\Helper\QuestionHelper" instead.', E_USER_DEPRECATED);
         }
     }
 
@@ -56,7 +56,7 @@ class DialogHelper extends InputAwareHelper
 
         $messages = (array) $question;
         foreach ($choices as $key => $value) {
-            $messages[] = sprintf("  [<info>%-${width}s</info>] %s", $key, $value);
+            $messages[] = sprintf("  [<info>%-{$width}s</info>] %s", $key, $value);
         }
 
         $output->writeln($messages);
@@ -399,7 +399,7 @@ class DialogHelper extends InputAwareHelper
     /**
      * Returns the helper's input stream.
      *
-     * @return string
+     * @return resource|null The input stream or null if the default STDIN is used
      */
     public function getInputStream()
     {
@@ -458,7 +458,7 @@ class DialogHelper extends InputAwareHelper
      * @param callable        $interviewer A callable that will ask for a question and return the result
      * @param OutputInterface $output      An Output instance
      * @param callable        $validator   A PHP callback
-     * @param int|false       $attempts    Max number of times to ask before giving up ; false will ask infinitely
+     * @param int|false       $attempts    Max number of times to ask before giving up; false will ask infinitely
      *
      * @return string The validated response
      *
@@ -466,18 +466,18 @@ class DialogHelper extends InputAwareHelper
      */
     private function validateAttempts($interviewer, OutputInterface $output, $validator, $attempts)
     {
-        $error = null;
+        $e = null;
         while (false === $attempts || $attempts--) {
-            if (null !== $error) {
-                $output->writeln($this->getHelperSet()->get('formatter')->formatBlock($error->getMessage(), 'error'));
+            if (null !== $e) {
+                $output->writeln($this->getHelperSet()->get('formatter')->formatBlock($e->getMessage(), 'error'));
             }
 
             try {
                 return call_user_func($validator, $interviewer());
-            } catch (\Exception $error) {
+            } catch (\Exception $e) {
             }
         }
 
-        throw $error;
+        throw $e;
     }
 }

@@ -171,7 +171,7 @@ class Table
         if ($row instanceof TableSeparator) {
             $this->rows[] = $row;
 
-            return;
+            return $this;
         }
 
         if (!is_array($row)) {
@@ -245,7 +245,7 @@ class Table
         }
 
         $markup = $this->style->getCrossingChar();
-        for ($column = 0; $column < $count; $column++) {
+        for ($column = 0; $column < $count; ++$column) {
             $markup .= str_repeat($this->style->getHorizontalBorderChar(), $this->getColumnWidth($column)).$this->style->getCrossingChar();
         }
 
@@ -332,18 +332,17 @@ class Table
             $columns[] = $this->getNumberOfColumns($row);
         }
 
-        return $this->numberOfColumns = max($columns);
+        $this->numberOfColumns = max($columns);
     }
 
     private function buildTableRows($rows)
     {
         $unmergedRows = array();
-        for ($rowKey = 0; $rowKey < count($rows); $rowKey++) {
+        for ($rowKey = 0; $rowKey < count($rows); ++$rowKey) {
             $rows = $this->fillNextRows($rows, $rowKey);
 
             // Remove any new line breaks and replace it with a new line
             foreach ($rows[$rowKey] as $column => $cell) {
-                $rows[$rowKey] = $this->fillCells($rows[$rowKey], $column);
                 if (!strstr($cell, "\n")) {
                     continue;
                 }
@@ -363,7 +362,7 @@ class Table
 
         $tableRows = array();
         foreach ($rows as $rowKey => $row) {
-            $tableRows[] = $row;
+            $tableRows[] = $this->fillCells($row);
             if (isset($unmergedRows[$rowKey])) {
                 $tableRows = array_merge($tableRows, $unmergedRows[$rowKey]);
             }
@@ -376,7 +375,7 @@ class Table
      * fill rows that contains rowspan > 1.
      *
      * @param array $rows
-     * @param array $line
+     * @param int   $line
      *
      * @return array
      */
@@ -385,7 +384,7 @@ class Table
         $unmergedRows = array();
         foreach ($rows[$line] as $column => $cell) {
             if ($cell instanceof TableCell && $cell->getRowspan() > 1) {
-                $nbLines = $cell->getRowspan()-1;
+                $nbLines = $cell->getRowspan() - 1;
                 $lines = array($cell);
                 if (strstr($cell, "\n")) {
                     $lines = explode("\n", $cell);
@@ -412,7 +411,7 @@ class Table
                     array_splice($rows[$unmergedRowKey], $cellKey, 0, array($cell));
                 }
             } else {
-                $row = $this->copyRow($rows, $unmergedRowKey-1);
+                $row = $this->copyRow($rows, $unmergedRowKey - 1);
                 foreach ($unmergedRow as $column => $cell) {
                     if (!empty($cell)) {
                         $row[$column] = $unmergedRow[$column];
@@ -429,21 +428,23 @@ class Table
      * fill cells for a row that contains colspan > 1.
      *
      * @param array $row
-     * @param array $column
      *
      * @return array
      */
-    private function fillCells($row, $column)
+    private function fillCells($row)
     {
-        $cell = $row[$column];
-        if ($cell instanceof TableCell && $cell->getColspan() > 1) {
-            foreach (range($column + 1, $column + $cell->getColspan() - 1) as $position) {
-                // insert empty value into rows at column position
-                array_splice($row, $position, 0, '');
+        $newRow = array();
+        foreach ($row as $column => $cell) {
+            $newRow[] = $cell;
+            if ($cell instanceof TableCell && $cell->getColspan() > 1) {
+                foreach (range($column + 1, $column + $cell->getColspan() - 1) as $position) {
+                    // insert empty value at column position
+                    $newRow[] = '';
+                }
             }
         }
 
-        return $row;
+        return $newRow ?: $row;
     }
 
     /**
@@ -476,7 +477,7 @@ class Table
     {
         $columns = count($row);
         foreach ($row as $column) {
-            $columns += $column instanceof TableCell ? ($column->getColspan()-1) : 0;
+            $columns += $column instanceof TableCell ? ($column->getColspan() - 1) : 0;
         }
 
         return $columns;
@@ -487,15 +488,15 @@ class Table
      *
      * @param array $row
      *
-     * @return array()
+     * @return array
      */
     private function getRowColumns($row)
     {
-        $columns = range(0, $this->numberOfColumns-1);
+        $columns = range(0, $this->numberOfColumns - 1);
         foreach ($row as $cellKey => $cell) {
             if ($cell instanceof TableCell && $cell->getColspan() > 1) {
                 // exclude grouped columns.
-                $columns = array_diff($columns, range($cellKey+1, $cellKey + $cell->getColspan()-1));
+                $columns = array_diff($columns, range($cellKey + 1, $cellKey + $cell->getColspan() - 1));
             }
         }
 
@@ -529,8 +530,6 @@ class Table
     /**
      * Gets column width.
      *
-     * @param int $column
-     *
      * @return int
      */
     private function getColumnSeparatorWidth()
@@ -550,12 +549,13 @@ class Table
     {
         if (isset($row[$column])) {
             $cell = $row[$column];
+            $cellWidth = Helper::strlenWithoutDecoration($this->output->getFormatter(), $cell);
             if ($cell instanceof TableCell && $cell->getColspan() > 1) {
                 // we assume that cell value will be across more than one column.
-                $cell = substr($cell, 0, strlen($cell)/$cell->getColspan());
+                $cellWidth = $cellWidth / $cell->getColspan();
             }
 
-            return Helper::strlenWithoutDecoration($this->output->getFormatter(), $cell);
+            return $cellWidth;
         }
 
         return 0;
