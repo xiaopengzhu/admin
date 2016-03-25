@@ -1,6 +1,7 @@
 <footer>
 
 </footer>
+
 <script src="<?php echo loadStatic('/lib/bootstrap/js/bootstrap.js'); ?>"></script>
 <script type="text/javascript">
     $(function() {

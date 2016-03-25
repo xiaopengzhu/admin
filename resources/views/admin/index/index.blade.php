@@ -7,7 +7,7 @@
           <div class="row">
               <div class=" col-md-12">
                   <div class="panel panel-default">
-                      <a href="#widget1container" class="panel-heading" data-toggle="collapse">开源协议 </a>
+                      <a href="#widget1container" class="panel-heading" data-toggle="collapse">首页 </a>
                       <div id="widget1container" class="panel-body collapse in">
                           欢迎光临
                       </div>
