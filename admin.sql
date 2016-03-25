@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 2016-03-25 16:05:52
+-- Generation Time: 2016-03-25 17:38:15
 -- 服务器版本： 10.1.10-MariaDB
 -- PHP Version: 5.6.15
 
@@ -33,6 +33,22 @@ CREATE TABLE `lv_access` (
   `type` tinyint(1) NOT NULL DEFAULT '1' COMMENT '标识是用户组还是用户1为用户组2为用户,默认为用户组'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='权限表';
 
+--
+-- 转存表中的数据 `lv_access`
+--
+
+INSERT INTO `lv_access` (`id`, `role_id`, `permission_id`, `type`) VALUES
+(581, 3, 1, 1),
+(582, 3, 67, 1),
+(583, 3, 4, 1),
+(584, 3, 29, 1),
+(585, 3, 2, 1),
+(586, 3, 26, 1),
+(587, 3, 3, 1),
+(588, 3, 33, 1),
+(589, 3, 68, 1),
+(590, 3, 53, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -57,7 +73,28 @@ CREATE TABLE `lv_action_log` (
 INSERT INTO `lv_action_log` (`id`, `username`, `user_id`, `ip`, `ip_adress`, `add_time`, `realname`, `content`) VALUES
 (1, 'admin', 1, '127.0.0.1', '', 1458917465, '管理员', '编辑了用户组：管理员'),
 (2, 'admin', 1, '127.0.0.1', '', 1458917988, '管理员', '登录系统成功'),
-(3, 'admin', 1, '127.0.0.1', '', 1458918109, '管理员', '登录系统成功');
+(3, 'admin', 1, '127.0.0.1', '', 1458918109, '管理员', '登录系统成功'),
+(4, 'admin', 1, '127.0.0.1', '', 1458919307, '管理员', '登录系统成功'),
+(5, 'admin', 1, '127.0.0.1', '', 1458921762, '管理员', '登录系统成功'),
+(6, 'admin', 1, '127.0.0.1', '', 1458923119, '管理员', '登录系统成功'),
+(7, 'admin', 1, '127.0.0.1', '', 1458923149, '管理员', '编辑了系统用户：admin'),
+(8, 'admin', 1, '127.0.0.1', '', 1458923173, '管理员', '编辑了系统用户：admin'),
+(9, 'admin', 1, '127.0.0.1', '', 1458923210, '管理员', '增加了新的用户组：游客'),
+(10, 'admin', 1, '127.0.0.1', '', 1458923233, '管理员', '改变了用户组的权限：管理员'),
+(11, 'admin', 1, '127.0.0.1', '', 1458923381, '管理员', '增加了新的系统用户：guest'),
+(12, 'guest', 4, '127.0.0.1', '', 1458923395, '王先生', '登录系统成功'),
+(13, 'admin', 1, '127.0.0.1', '', 1458923402, '朱先生', '登录系统成功'),
+(14, 'admin', 1, '127.0.0.1', '', 1458923425, '朱先生', '改变了用户组的权限：游客'),
+(15, 'guest', 4, '127.0.0.1', '', 1458923535, '王先生', '登录系统成功'),
+(16, 'admin', 1, '127.0.0.1', '', 1458923581, '朱先生', '登录系统成功'),
+(17, 'admin', 1, '127.0.0.1', '', 1458923604, '朱先生', '改变了用户的权限：guest'),
+(18, 'admin', 1, '127.0.0.1', '', 1458923615, '朱先生', '改变了用户的权限：guest'),
+(19, 'admin', 1, '127.0.0.1', '', 1458923632, '朱先生', '改变了用户的权限：guest'),
+(20, 'guest', 4, '127.0.0.1', '', 1458923683, '王先生', '登录系统成功'),
+(21, 'admin', 1, '127.0.0.1', '', 1458923703, '朱先生', '登录系统成功'),
+(22, 'admin', 1, '127.0.0.1', '', 1458923726, '朱先生', '改变了用户的权限：guest'),
+(23, 'guest', 4, '127.0.0.1', '', 1458923743, '王先生', '登录系统成功'),
+(24, 'admin', 1, '127.0.0.1', '', 1458923755, '朱先生', '登录系统成功');
 
 -- --------------------------------------------------------
 
@@ -78,7 +115,8 @@ CREATE TABLE `lv_group` (
 --
 
 INSERT INTO `lv_group` (`id`, `group_name`, `mark`, `status`, `level`) VALUES
-(1, '管理员', '可以管理网站的所有数据，不受任何限制', 1, 1);
+(1, '管理员', '可以管理网站的所有数据，不受任何限制', 1, 1),
+(3, '游客', '仅有浏览功能', 1, 9);
 
 -- --------------------------------------------------------
 
@@ -152,7 +190,8 @@ CREATE TABLE `lv_users` (
 --
 
 INSERT INTO `lv_users` (`id`, `name`, `password`, `group_id`, `realname`, `token`, `add_time`, `modify_time`, `mobile`, `status`, `mark`, `last_login_ip`, `last_login_time`) VALUES
-(1, 'admin', '6512bd43d9caa6e02c990b0a82652dca', 1, '管理员', 'oyzzO7YxmgJHlAfdK5HaZMscegJPcTrw5drPQRS6bjlfAkTB6NELPvqpc12q', 0, 0, '12', 1, '超级用户组', '127.0.0.1', 1458918109);
+(1, 'admin', 'e10adc3949ba59abbe56e057f20f883e', 1, '朱先生', 'oyzzO7YxmgJHlAfdK5HaZMscegJPcTrw5drPQRS6bjlfAkTB6NELPvqpc12q', 0, 0, '13000000000', 1, '超级用户组', '127.0.0.1', 1458923755),
+(4, 'guest', 'e10adc3949ba59abbe56e057f20f883e', 3, '王先生', '', 1458923381, 0, '18000000000', 1, '仅供浏览', '127.0.0.1', 1458923743);
 
 --
 -- Indexes for dumped tables
@@ -207,17 +246,17 @@ ALTER TABLE `lv_users`
 -- 使用表AUTO_INCREMENT `lv_access`
 --
 ALTER TABLE `lv_access`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=571;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=595;
 --
 -- 使用表AUTO_INCREMENT `lv_action_log`
 --
 ALTER TABLE `lv_action_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 --
 -- 使用表AUTO_INCREMENT `lv_group`
 --
 ALTER TABLE `lv_group`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- 使用表AUTO_INCREMENT `lv_permission`
 --
@@ -227,7 +266,7 @@ ALTER TABLE `lv_permission`
 -- 使用表AUTO_INCREMENT `lv_users`
 --
 ALTER TABLE `lv_users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
