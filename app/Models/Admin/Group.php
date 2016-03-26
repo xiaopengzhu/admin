@@ -1,7 +1,5 @@
 <?php namespace App\Models\Admin;
 
-use App\Models\Admin\Base;
-
 /**
  * 用户组表模型
  *
@@ -69,6 +67,7 @@ class Group extends Base
      * 增加用户组
      * 
      * @param array $data 所需要插入的信息
+     * @return static
      */
     public function addGroup(array $data)
     {
@@ -88,7 +87,8 @@ class Group extends Base
     /**
      * 删除用户组
      * 
-     * @param array $id 权限功能的ID
+     * @param array $ids 权限功能的ID
+     * @return int
      */
     public function deleteGroup(array $ids)
     {

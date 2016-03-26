@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin\Foundation;
 use App\Http\Controllers\Admin\Controller;
 use App\Models\Admin\ActionLog as ActionLogModel;
 use Request, Lang;
-use App\Libraries\Js;
 
 /**
  * 操作日志

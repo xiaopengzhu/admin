@@ -2,9 +2,6 @@
 
 namespace App\Widget\Admin;
 
-use App\Widget\Admin\AbstractBase;
-use App\Services\Admin\Acl\Acl as AclManager;
-
 /**
  * 权限列表小组件
  *

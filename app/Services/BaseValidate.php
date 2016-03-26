@@ -8,8 +8,6 @@
 
 namespace App\Services;
 
-use App\Services\AbstractService;
-
 class BaseValidate extends AbstractService
 {
     

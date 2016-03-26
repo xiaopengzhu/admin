@@ -50,7 +50,7 @@ class Process extends BaseProcess
     /**
      * 增加新的用户
      *
-     * @param object $data
+     * @param mixed $data
      * @access public
      * @return boolean true|false
      */
@@ -78,7 +78,7 @@ class Process extends BaseProcess
     /**
      * 删除用户
      * 
-     * @param string $data
+     * @param array $ids
      * @access public
      * @return boolean true|false
      */
@@ -108,7 +108,7 @@ class Process extends BaseProcess
     /**
      * 编辑用户
      *
-     * @param object $data
+     * @param mixed $data
      * @access public
      * @return boolean true|false
      */
@@ -139,7 +139,7 @@ class Process extends BaseProcess
     /**
      * 修改自己的密码
      * 
-     * @param object $params
+     * @param mixed $params
      * @return true|false
      */
     public function modifyPassword(\App\Services\Admin\User\Param\UserModifyPassword $params)

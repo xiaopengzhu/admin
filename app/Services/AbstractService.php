@@ -28,6 +28,7 @@ abstract class AbstractService
      * 设置错误的信息
      *
      * @param string $errorMsg 错误的信息
+     * @return boolean
      */
     public function setErrorMsg($errorMsg)
     {

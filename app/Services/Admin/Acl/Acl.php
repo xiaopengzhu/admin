@@ -309,8 +309,9 @@ class Acl
     /**
      * 判断是不是超级用户
      *
-     * @param object $userObj
+     * @param boolean $userObj
      * @access public
+     * @return boolean
      */
     public function isSystemManager($userObj = false)
     {

@@ -76,6 +76,7 @@ class MCAManager {
      * set current module
      * 
      * @param string $module
+     * @return object
      */
     public function setModule($module)
     {
@@ -87,6 +88,7 @@ class MCAManager {
      * set current action
      * 
      * @param string $action
+     * @return object
      */
     public function setAction($action)
     {
@@ -98,6 +100,7 @@ class MCAManager {
      * set current class
      * 
      * @param string $class
+     * @return object
      */
     public function setClass($class)
     {
@@ -234,7 +237,7 @@ class MCAManager {
     /**
      * 根据当前的请求查找符合要求的权限信息
      * 
-     * @param int $level 几级菜单但不是一级菜单
+     * @param int $menuLevel 几级菜单但不是一级菜单
      * @return array
      */
     private function searchMCAMatchMenuLevelForCurrentMCA($menuLevel, $currentMCAInfo)

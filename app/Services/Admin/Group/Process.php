@@ -50,7 +50,7 @@ class Process extends BaseProcess
     /**
      * 增加新的用户组
      *
-     * @param object $data
+     * @param mixed $data
      * @return boolean true|false
      * @access public
      */
@@ -92,7 +92,7 @@ class Process extends BaseProcess
     /**
      * 编辑用户组
      *
-     * @param object $data
+     * @param mixed $data
      * @return boolean true|false
      * @access public
      */

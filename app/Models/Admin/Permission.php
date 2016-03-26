@@ -1,7 +1,5 @@
 <?php namespace App\Models\Admin;
 
-use App\Models\Admin\Base;
-
 /**
  * 权限表模型
  *
@@ -48,6 +46,7 @@ class Permission extends Base
      * 增加权限功能
      * 
      * @param array $data 所需要插入的信息
+     * @return static
      */
     public function addPermission(array $data)
     {
@@ -67,7 +66,8 @@ class Permission extends Base
     /**
      * 删除权限功能
      * 
-     * @param array $id 权限功能的ID
+     * @param array $ids 权限功能的ID
+     * @return int
      */
     public function deletePermission(array $ids)
     {
@@ -103,7 +103,7 @@ class Permission extends Base
      * @param array $module 模块
      * @param array $class 类
      * @param array $function 函数
-     * @param array $checkSelf 当编辑的时候是否检测自己
+     * @param boolean $checkSelf 当编辑的时候是否检测自己
      * @return boolean
      */
     public function checkIfIsExists($module, $class, $function, $checkSelf = true, $selfId = false)

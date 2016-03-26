@@ -102,6 +102,7 @@ abstract class AbstractParam implements ArrayAccess
      * 把值赋予到参数容器中
      * 
      * @param array $attributes 传入的值数值
+     * @return object
      */
     public function setAttributes($attributes)
     {

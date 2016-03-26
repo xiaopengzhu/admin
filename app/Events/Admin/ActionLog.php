@@ -3,7 +3,6 @@
 namespace App\Events\Admin;
 
 use App\Events\Event;
-use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use App\Services\Admin\SC;
 
 class ActionLog extends Event
@@ -39,7 +38,6 @@ class ActionLog extends Event
     /**
      * Create a new event instance.
      *
-     * @return void
      */
     public function __construct($message, $extendsDatas = [])
     {

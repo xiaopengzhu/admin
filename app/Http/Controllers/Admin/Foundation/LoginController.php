@@ -3,7 +3,6 @@
 use App\Http\Controllers\Admin\Controller;
 use App\Services\Admin\Login\Process as LoginProcess;
 use App\Services\Admin\SC;
-use App\Models\Admin\User;
 use App\Services\Admin\Acl\Acl;
 use Request;
 

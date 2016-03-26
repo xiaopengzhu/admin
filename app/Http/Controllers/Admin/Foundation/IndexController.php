@@ -1,6 +1,5 @@
 <?php namespace App\Http\Controllers\Admin\Foundation;
 
-use App\Services\Admin\SC;
 use App\Http\Controllers\Admin\Controller;
 
 /**

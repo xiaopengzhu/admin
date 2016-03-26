@@ -2,8 +2,6 @@
 
 namespace App\Widget\Admin;
 
-use App\Widget\Admin\AbstractBase;
-
 /**
  * 推荐位列表小组件
  *

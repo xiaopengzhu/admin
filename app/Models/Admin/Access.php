@@ -1,7 +1,5 @@
 <?php namespace App\Models\Admin;
 
-use App\Models\Admin\Base;
-
 /**
  * 权限用户(组)关系表模型
  *

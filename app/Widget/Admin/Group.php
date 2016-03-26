@@ -2,7 +2,6 @@
 
 namespace App\Widget\Admin;
 
-use App\Widget\Admin\AbstractBase;
 use App\Services\Admin\Acl\Acl;
 
 /**

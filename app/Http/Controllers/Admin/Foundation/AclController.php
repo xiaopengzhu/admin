@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin\Foundation;
 
 use App\Http\Controllers\Admin\Controller;
 use App\Models\Admin\Permission as PermissionModel;
-use App\Models\Admin\Access as AccessModel;
 use App\Models\Admin\User as UserModel;
 use App\Models\Admin\Group as GroupModel;
 use Request, Lang, Session;
@@ -12,7 +11,6 @@ use App\Services\Admin\Acl\Process as AclProcess;
 use App\Libraries\Js;
 use App\Services\Admin\Acl\Acl;
 use App\Services\Admin\Tree;
-use App\Services\Admin\SC;
 
 /**
  * 权限菜单相关

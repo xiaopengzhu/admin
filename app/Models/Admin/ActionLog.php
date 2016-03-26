@@ -1,7 +1,5 @@
 <?php namespace App\Models\Admin;
 
-use App\Models\Admin\Base;
-
 /**
  * 操作日志表模型
  *
@@ -27,6 +25,7 @@ class ActionLog extends Base
      * 增加操作日志
      * 
      * @param array $data 所需要插入的信息
+     * @return static
      */
     public function add(array $data)
     {

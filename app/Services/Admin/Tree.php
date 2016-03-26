@@ -57,8 +57,8 @@ class Tree
      * 递归select中的option下拉表单，用于权限增加和编辑
      * 
      * @param  array $datas 数据源
-     * @param  array $id 已经选择的option值
-     * @param  array $prefix 下拉表单的线
+     * @param  int $id 已经选择的option值
+     * @param  string $prefix 下拉表单的线
      * @return html 返回组装好的option代码
      */
     static public function dropDownSelect(array $datas, $id = 0, $prefix = '')

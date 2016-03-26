@@ -51,7 +51,7 @@ class Process extends BaseProcess
     /**
      * 增加新的权限菜单
      *
-     * @param object $data
+     * @param mixed $data
      * @return boolean true|false
      * @access public
      */
@@ -120,7 +120,7 @@ class Process extends BaseProcess
     /**
      * 编辑权限菜单
      *
-     * @param object $data
+     * @param mixed $data
      * @return boolean true|false
      * @access public
      */
@@ -151,7 +151,7 @@ class Process extends BaseProcess
     /**
      * 设置用户(组)的权限
      *
-     * @param object $data
+     * @param mixed $data
      * @param int $type
      * @return boolean
      * @access private

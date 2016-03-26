@@ -2,8 +2,6 @@
 
 namespace App\Widget\Admin;
 
-use App\Widget\Admin\AbstractBase;
-
 /**
  * 文章标签小组件
  *

@@ -18,6 +18,7 @@ class UserModifyPassword extends AbstractParam
     /**
      * setOldPassword
      * @param string $oldPassword 旧的密码
+     * @return object
      */
     public function setOldPassword($oldPassword)
     {
@@ -28,6 +29,7 @@ class UserModifyPassword extends AbstractParam
     /**
      * setNewPassword
      * @param string $oldPassword 新的密码
+     * @return object
      */
     public function setNewPassword($newPassword)
     {
@@ -37,7 +39,8 @@ class UserModifyPassword extends AbstractParam
 
     /**
      * setNewPassword
-     * @param string $oldPassword 新的密码
+     * @param string $newPasswordRepeat 新的密码
+     * @return object
      */
     public function setNewPasswordRepeat($newPasswordRepeat)
     {

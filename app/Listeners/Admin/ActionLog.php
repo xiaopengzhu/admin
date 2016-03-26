@@ -3,8 +3,6 @@
 namespace App\Listeners\Admin;
 
 use App\Events\Admin\ActionLog as EventsActionLog;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 use App\Models\Admin\ActionLog as ActionLogModel;
 use Request;
@@ -16,7 +14,6 @@ class ActionLog
     /**
      * Create the event handler.
      *
-     * @return void
      */
     public function __construct()
     {

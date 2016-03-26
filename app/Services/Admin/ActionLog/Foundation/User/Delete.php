@@ -2,7 +2,6 @@
 
 use App\Services\Admin\AbstractActionLog;
 use App\Events\Admin\ActionLog;
-use App\Models\Admin\User;
 use Request, Lang;
 
 /**

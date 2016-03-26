@@ -1,7 +1,5 @@
 <?php namespace App\Models\Admin;
 
-use App\Models\Admin\Base;
-
 /**
  * 用户表模型
  */
@@ -62,6 +60,7 @@ class User extends Base
      * 增加用户
      * 
      * @param array $data 所需要插入的信息
+     * @return static
      */
     public function addUser(array $data)
     {
@@ -81,7 +80,8 @@ class User extends Base
     /**
      * 删除用户
      * 
-     * @param array $id 权限功能的ID
+     * @param array $ids 权限功能的ID
+     * @return static
      */
     public function deleteUser(array $ids)
     {
@@ -115,6 +115,7 @@ class User extends Base
      * 
      * @param int $userId 登录用户的ID
      * @param int $data 更新的数据
+     * @return string
      */
     public function updateLastLoginInfo($userId, $data)
     {
