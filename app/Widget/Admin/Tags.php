@@ -5,7 +5,6 @@ namespace App\Widget\Admin;
 /**
  * 文章标签小组件
  *
- * @author jiang <mylampblog@163.com>
  */
 class Tags extends AbstractBase
 {

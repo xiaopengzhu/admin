@@ -5,7 +5,6 @@ namespace App\Widget\Admin;
 /**
  * 文章评论小组件
  *
- * @author jiang <mylampblog@163.com>
  */
 class Comment extends AbstractBase
 {

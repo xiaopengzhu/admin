@@ -5,7 +5,6 @@ namespace App\Widget\Admin;
 /**
  * 权限列表小组件
  *
- * @author jiang <mylampblog@163.com>
  */
 class Acl extends AbstractBase
 {

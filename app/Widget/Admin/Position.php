@@ -5,7 +5,6 @@ namespace App\Widget\Admin;
 /**
  * 推荐位列表小组件
  *
- * @author jiang <mylampblog@163.com>
  */
 class Position extends AbstractBase
 {

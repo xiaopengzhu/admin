@@ -9,7 +9,6 @@ use Request;
 /**
  * 登录相关
  *
- * @author jiang <mylampblog@163.com>
  */
 class LoginController extends Controller
 {

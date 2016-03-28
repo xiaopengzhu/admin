@@ -13,7 +13,6 @@ use App\Services\Admin\Acl\Acl;
 /**
  * 用户组管理
  *
- * @author jiang <mylampblog@163.com>
  */
 class GroupController extends Controller
 {

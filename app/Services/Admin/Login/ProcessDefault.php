@@ -11,7 +11,6 @@ use Request, Session;
 /**
  * 登录处理
  *
- * @author jiang <mylampblog@163.com>
  */
 class ProcessDefault extends AbstractProcess
 {

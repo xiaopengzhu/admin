@@ -3,7 +3,6 @@
 /**
  * 用户操作日志
  *
- * @author jiang <mylampblog@163.com>
  */
 class Mark
 {

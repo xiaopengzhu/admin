@@ -11,7 +11,6 @@ use App\Services\Admin\SC;
 /**
  * 权限菜单处理
  *
- * @author jiang <mylampblog@163.com>
  */
 class Process extends BaseProcess
 {

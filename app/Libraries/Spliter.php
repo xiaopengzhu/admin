@@ -3,9 +3,8 @@
 namespace App\Libraries;
 
 /**
- * class from chanzhi <http://www.chanzhi.org/>, and modified by me at 2015.3.23
+ * Spliter
  *
- * @author jiang <mylampblog@163.com>
  */
 class Spliter
 {

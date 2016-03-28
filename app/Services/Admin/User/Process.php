@@ -10,7 +10,6 @@ use App\Services\BaseProcess;
 /**
  * 用户处理
  *
- * @author jiang <mylampblog@163.com>
  */
 class Process extends BaseProcess
 {

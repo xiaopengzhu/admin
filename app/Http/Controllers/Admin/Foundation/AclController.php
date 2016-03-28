@@ -15,7 +15,6 @@ use App\Services\Admin\Tree;
 /**
  * 权限菜单相关
  *
- * @author jiang <mylampblog@163.com>
  */
 class AclController extends Controller
 {

@@ -6,7 +6,6 @@ use App\Services\Admin\Login\AbstractProcess;
 /**
  * 登录处理
  *
- * @author jiang <mylampblog@163.com>
  */
 class Process {
 

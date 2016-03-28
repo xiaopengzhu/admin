@@ -5,7 +5,6 @@ use App\Http\Controllers\Admin\Controller;
 /**
  * 登录相关
  *
- * @author jiang <mylampblog@163.com>
  */
 class IndexController extends Controller
 {

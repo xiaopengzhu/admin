@@ -5,7 +5,6 @@ namespace App\Widget\Admin;
 /**
  * 文章分类列表小组件
  *
- * @author jiang <mylampblog@163.com>
  */
 class Category extends AbstractBase
 {

@@ -9,7 +9,6 @@ use Request, Lang;
 /**
  * 操作日志
  *
- * @author jiang <mylampblog@163.com>
  */
 class LogController extends Controller
 {

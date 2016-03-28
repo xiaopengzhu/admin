@@ -7,7 +7,6 @@ use App\Services\Admin\Acl\Acl;
 /**
  * 用户组列表小组件
  *
- * @author jiang <mylampblog@163.com>
  */
 class Group extends AbstractBase
 {

@@ -7,7 +7,6 @@ use App\Models\Admin\Position as PositionModel;
 /**
  * 文章列表小组件
  *
- * @author jiang <mylampblog@163.com>
  */
 class Content extends AbstractBase
 {

@@ -11,7 +11,6 @@ use Route;
  * 
  * 你需要返回完整的 Illuminate\Http\Response 实例或是一个视图
  *
- * @author jiang <mylampblog@163.com>
  */
 class Routes
 {

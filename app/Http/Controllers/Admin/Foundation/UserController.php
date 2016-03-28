@@ -14,7 +14,6 @@ use App\Services\Admin\User\Param\UserModifyPassword;
 /**
  * 用户相关
  *
- * @author jiang <mylampblog@163.com>
  */
 class UserController extends Controller
 {

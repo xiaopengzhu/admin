@@ -8,7 +8,6 @@ use App\Services\Admin\Tree;
 /**
  * 菜单小组件
  *
- * @author jiang <mylampblog@163.com>
  */
 class Menu
 {

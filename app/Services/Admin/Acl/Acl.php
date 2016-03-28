@@ -3,7 +3,6 @@
 /**
  * 用户权限处理相关
  *
- * @author jiang <mylampblog@163.com>
  */
 
 namespace App\Services\Admin\Acl;

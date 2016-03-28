@@ -6,7 +6,6 @@ use App\Services\BaseValidate;
 /**
  * 功能表单验证
  *
- * @author jiang <mylampblog@163.com>
  */
 class Acl extends BaseValidate
 {
