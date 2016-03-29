@@ -2,7 +2,7 @@
 
 use App\Services\Routes as RoutesManager;
 
-//这里你可以写一些路由覆盖掉RoutesManager的
+//这里可以写一些路由覆盖掉RoutesManager
 //.....
 
 $routesManager = new RoutesManager();

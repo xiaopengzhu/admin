@@ -1,4 +1,6 @@
-<?php namespace App\Services\Admin\ActionLog;
+<?php
+
+namespace App\Services\Admin\ActionLog;
 
 /**
  * 用户操作日志

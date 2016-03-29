@@ -1,4 +1,6 @@
-<?php namespace App\Services\Admin\Acl\Validate;
+<?php
+
+namespace App\Services\Admin\Acl\Validate;
 
 use Validator, Lang;
 use App\Services\BaseValidate;

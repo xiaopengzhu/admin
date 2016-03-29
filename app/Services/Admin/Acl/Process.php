@@ -1,4 +1,6 @@
-<?php namespace App\Services\Admin\Acl;
+<?php
+
+namespace App\Services\Admin\Acl;
 
 use Lang;
 use App\Services\Admin\Acl\Validate\Acl as AclValidate;

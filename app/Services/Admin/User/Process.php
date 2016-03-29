@@ -1,4 +1,6 @@
-<?php namespace App\Services\Admin\User;
+<?php
+
+namespace App\Services\Admin\User;
 
 use Lang;
 use App\Models\Admin\User as UserModel;

@@ -1,4 +1,6 @@
-<?php namespace App\Services\Admin\Login;
+<?php
+
+namespace App\Services\Admin\Login;
 
 abstract class AbstractProcess {
 

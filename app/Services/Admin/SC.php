@@ -1,4 +1,6 @@
-<?php namespace App\Services\Admin;
+<?php
+
+namespace App\Services\Admin;
 
 use Session, Cookie, Request;
 

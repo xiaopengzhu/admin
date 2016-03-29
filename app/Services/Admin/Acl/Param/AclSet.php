@@ -1,4 +1,6 @@
-<?php namespace App\Services\Admin\Acl\Param;
+<?php
+
+namespace App\Services\Admin\Acl\Param;
 
 use App\Services\AbstractParam;
 

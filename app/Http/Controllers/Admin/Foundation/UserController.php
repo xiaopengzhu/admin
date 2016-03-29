@@ -1,4 +1,6 @@
-<?php namespace App\Http\Controllers\Admin\Foundation;
+<?php
+
+namespace App\Http\Controllers\Admin\Foundation;
 
 use App\Models\Admin\Group;
 use App\Models\Admin\User;

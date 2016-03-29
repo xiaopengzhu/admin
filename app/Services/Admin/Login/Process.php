@@ -1,4 +1,6 @@
-<?php namespace App\Services\Admin\Login;
+<?php
+
+namespace App\Services\Admin\Login;
 
 use Config;
 use App\Services\Admin\Login\AbstractProcess;

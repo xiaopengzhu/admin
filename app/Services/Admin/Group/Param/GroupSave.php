@@ -1,4 +1,6 @@
-<?php namespace App\Services\Admin\Group\Param;
+<?php
+
+namespace App\Services\Admin\Group\Param;
 
 use App\Services\AbstractParam;
 

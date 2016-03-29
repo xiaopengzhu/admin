@@ -1,6 +1,6 @@
-<?php namespace App\Services\Admin;
+<?php
 
-use App\Services\Admin\SC;
+namespace App\Services\Admin;
 
 /**
  * 主要用来储存当前请求的模块、类、函数

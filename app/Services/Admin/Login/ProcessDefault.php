@@ -1,4 +1,6 @@
-<?php namespace App\Services\Admin\Login;
+<?php
+
+namespace App\Services\Admin\Login;
 
 use App\Models\Admin\User as UserModel;
 use App\Models\Admin\Permission as PermissionModel;

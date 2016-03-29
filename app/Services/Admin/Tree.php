@@ -1,9 +1,10 @@
-<?php namespace App\Services\Admin;
+<?php
+
+namespace App\Services\Admin;
 
 /**
  * 树形结构处理类
  *
- * @author jiang
  */
 class Tree
 {

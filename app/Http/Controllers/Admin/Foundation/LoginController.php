@@ -1,4 +1,6 @@
-<?php namespace App\Http\Controllers\Admin\Foundation;
+<?php
+
+namespace App\Http\Controllers\Admin\Foundation;
 
 use App\Http\Controllers\Admin\Controller;
 use App\Services\Admin\Login\Process as LoginProcess;

@@ -1,4 +1,6 @@
-<?php namespace App\Services\Admin\Group;
+<?php
+
+namespace App\Services\Admin\Group;
 
 use Lang;
 use App\Models\Admin\Group as GroupModel;

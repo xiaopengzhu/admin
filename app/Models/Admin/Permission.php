@@ -1,4 +1,6 @@
-<?php namespace App\Models\Admin;
+<?php
+
+namespace App\Models\Admin;
 
 /**
  * 权限表模型

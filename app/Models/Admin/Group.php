@@ -1,4 +1,6 @@
-<?php namespace App\Models\Admin;
+<?php
+
+namespace App\Models\Admin;
 
 /**
  * 用户组表模型

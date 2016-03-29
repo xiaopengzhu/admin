@@ -1,13 +1,14 @@
 <?php
 
 /**
- * 自己重新定义的生成URL函数，方便使用而已。
+ * 自己重新定义的生成URL函数
  *
  * @param string $route 路由别中
  * @param string $urlString 当前操作的模块、类、函数，以点为分隔
  * @param string $params 附带参数
  * @return string
  */
+
 if( ! function_exists('R'))
 {
     function R($route, $urlString, $params = [])

@@ -1,4 +1,6 @@
-<?php namespace App\Services\Admin\ActionLog\Foundation\Group;
+<?php
+
+namespace App\Services\Admin\ActionLog\Foundation\Group;
 
 use App\Services\Admin\AbstractActionLog;
 use App\Events\Admin\ActionLog;
