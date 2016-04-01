@@ -35,7 +35,8 @@ class Acl
     /**
      * buildAclParam
      *
-     * @param object $repuest
+     * @param $request
+     * @return \stdClass
      */
     private function buildAclParam($request)
     {

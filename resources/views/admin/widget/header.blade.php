@@ -6,53 +6,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="stylesheet" type="text/css" href="<?php echo loadStatic('/lib/bootstrap/css/bootstrap.css'); ?>">
-    <link rel="stylesheet" href="<?php echo loadStatic('/lib/font-awesome/css/font-awesome.css'); ?>">
-    <link rel="stylesheet" type="text/css" href="<?php echo loadStatic('/stylesheets/theme.css'); ?>">
-    <link rel="stylesheet" type="text/css" href="<?php echo loadStatic('/stylesheets/premium.css'); ?>">
-    <style type="text/css">
-        #line-chart {
-            height:300px;
-            width:800px;
-            margin: 0px auto;
-            margin-top: 1em;
-        }
-        .navbar-default .navbar-brand, .navbar-default .navbar-brand:hover { 
-            color: #fff;
-        }
-        .none {
-            display: none;
-        }
-        .notic {
-            color: red;
-            display: none;
-        }
-        ul.pagination {
-            margin:10px 0;
-        }
-    </style>
-    <script src="<?php echo loadStatic('/lib/jquery-1.11.1.min.js'); ?>" type="text/javascript"></script>
-    <script src="<?php echo loadStatic('/lib/jquery.cookie.js'); ?>" type="text/javascript"></script>
-    <script src="<?php echo loadStatic('/lib/blockui.js'); ?>" type="text/javascript"></script>
-    <script src="<?php echo loadStatic('/lib/common.js'); ?>" type="text/javascript"></script>
+    <!-- build:css public/build/css/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="/lib/artDialog/css/ui-dialog.css" />
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="/lib/ztree_v3/css/zTreeStyle/zTreeStyle.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
 
-    <!-- 弹出窗口 -->
-    <link rel="stylesheet" href="<?php echo loadStatic('/lib/artdialog/css/ui-dialog.css'); ?>">
-    <script src="<?php echo loadStatic('/lib/artdialog/dist/dialog-plus-min.js'); ?>"></script>
-
-    <!-- ztree -->
-    <link rel="stylesheet" href="<?php echo loadStatic('/lib/zTree_v3/css/zTreeStyle/zTreeStyle.css'); ?>" type="text/css">
-    <script type="text/javascript" src="<?php echo loadStatic('/lib/zTree_v3/js/jquery.ztree.core-3.5.js'); ?>"></script>
-    <script type="text/javascript" src="<?php echo loadStatic('/lib/zTree_v3/js/jquery.ztree.excheck-3.5.js'); ?>"></script>
-
-    <script type="text/javascript">
+    <!-- build:css public/build/css/main.css -->
+    <link rel="stylesheet" type="text/css" href="/css/premium.css">
+    <link rel="stylesheet" type="text/css" href="/css/theme.css">
+    <link rel="stylesheet" type="text/css" href="/css/app.css">
+    <!-- endbuild -->
+    <script>
+        window.cacheData = {};
         var SYS_DOMAIN = '<?php echo $domain['domain']; ?>';
         var SYS_IMG_DOMAIN = '<?php echo $domain['img_domain']; ?>';
     </script>
 
-    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="<?php echo loadStatic('/lib/html5.js'); ?>"></script>
-    <![endif]-->
+    <!-- build:js /public/build/js/vendor.js -->
+    <!-- bower:js -->
+    <script src="/lib/jquery/dist/jquery.js"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="/lib/artDialog/dist/dialog-plus.js"></script>
+    <script src="/lib/jquery.cookie/jquery.cookie.js"></script>
+    <script src="/lib/blockUI/jquery.blockUI.js"></script>
+    <script src="/lib/ztree_v3/js/jquery.ztree.core.js"></script>
+    <script src="/lib/ztree_v3/js/jquery.ztree.excheck.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
 </head>
 <body class="theme-3" style="min-width:350px;">

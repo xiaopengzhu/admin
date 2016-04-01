@@ -28,13 +28,13 @@ class ActionLog
      */
     public function handle(EventsActionLog $event)
     {
-        $addDatas['username'] = $event->userName;
-        $addDatas['user_id'] = $event->userId;
-        $addDatas['ip'] = Request::ip();
-        $addDatas['ip_adress'] = '';
-        $addDatas['add_time'] = time();
-        $addDatas['realname'] = $event->realName;
-        $addDatas['content'] = $event->message;
-        $this->model->add($addDatas);
+        $addData['username'] = $event->userName;
+        $addData['user_id'] = $event->userId;
+        $addData['ip'] = Request::ip();
+        $addData['ip_address'] = '';
+        $addData['add_time'] = time();
+        $addData['realname'] = $event->realName;
+        $addData['content'] = $event->message;
+        $this->model->add($addData);
     }
 }

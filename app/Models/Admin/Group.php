@@ -5,7 +5,6 @@ namespace App\Models\Admin;
 /**
  * 用户组表模型
  *
- * @author jiang
  */
 class Group extends Base
 {
@@ -100,7 +99,7 @@ class Group extends Base
     /**
      * 取得指定ID组的用户组信息
      * 
-     * @param intval $ids 用户组的ID
+     * @param int $ids 用户组的ID
      * @return array
      */
     public function getGroupInIds($ids)

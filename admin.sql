@@ -60,7 +60,7 @@ CREATE TABLE `lv_action_log` (
   `username` varchar(50) NOT NULL COMMENT '登录的用户名',
   `user_id` int(11) NOT NULL COMMENT '登录的用户ID',
   `ip` varchar(20) NOT NULL COMMENT 'ip地址',
-  `ip_adress` varchar(255) NOT NULL COMMENT 'ip所属的地区',
+  `ip_address` varchar(255) NOT NULL COMMENT 'ip所属的地区',
   `add_time` int(11) NOT NULL,
   `realname` varchar(30) NOT NULL COMMENT '真实姓名',
   `content` text NOT NULL COMMENT '记录的内容'
@@ -70,7 +70,7 @@ CREATE TABLE `lv_action_log` (
 -- 转存表中的数据 `lv_action_log`
 --
 
-INSERT INTO `lv_action_log` (`id`, `username`, `user_id`, `ip`, `ip_adress`, `add_time`, `realname`, `content`) VALUES
+INSERT INTO `lv_action_log` (`id`, `username`, `user_id`, `ip`, `ip_address`, `add_time`, `realname`, `content`) VALUES
 (1, 'admin', 1, '127.0.0.1', '', 1458917465, '管理员', '编辑了用户组：管理员'),
 (2, 'admin', 1, '127.0.0.1', '', 1458917988, '管理员', '登录系统成功'),
 (3, 'admin', 1, '127.0.0.1', '', 1458918109, '管理员', '登录系统成功'),

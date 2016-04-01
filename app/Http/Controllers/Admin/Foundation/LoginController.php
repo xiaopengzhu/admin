@@ -30,10 +30,9 @@ class LoginController extends Controller
 
     /**
      * 开始登录处理，并保存用户登陆需要的相关信息到SESSION中
-     *
-     * @param App\Services\Admin\Login\Process $loginProcess 登陆处理器
-     * @param App\Services\Admin\Acl\Acl $aclObj 权限处理器
-     * @access public
+     * @param LoginProcess $loginProcess
+     * @param Acl $aclObj
+     * @return \Symfony\Component\HttpFoundation\JsonResponse
      */
     public function getProc(LoginProcess $loginProcess, Acl $aclObj)
     {
@@ -60,8 +59,8 @@ class LoginController extends Controller
     /**
      * 初始化登录，返回加密密钥
      *
-     * @param App\Services\Login\Process $loginProcess 登陆处理器
-     * @access public
+     * @param LoginProcess $loginProcess
+     * @return \Symfony\Component\HttpFoundation\JsonResponse
      */
     public function getPrelogin(LoginProcess $loginProcess)
     {
@@ -72,8 +71,8 @@ class LoginController extends Controller
     /**
      * 登录退出
      *
-     * @param App\Services\Login\Process $loginProcess 登陆处理器
-     * @access public
+     * @param LoginProcess $loginProcess
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function getOut(LoginProcess $loginProcess)
     {

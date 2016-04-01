@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Validator;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +14,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        /**
+        Validator::extend('checkSchoolName', function($attribute, $value, $parameters) {
+            if (!$value) return false;
+            $school = YbBaseApi('School', 'searchSchool', ['where' => ['name' => $value]]);
+        });
+        */
     }
 
     /**

@@ -307,3 +307,43 @@ if( ! function_exists('header_cache'))
         return $view;
     }
 }
+
+/**
+ * 调用易班基础组 API
+ * @param string $module
+ * @param string $function
+ * @param array $params
+ * @param int $timeout
+ * @return array
+ */
+if( ! function_exists('YbBaseApi'))
+{
+    function YbBaseApi($module, $function, $params, $timeout = 3)
+    {
+        $config = config('sys.yiban_base');
+
+        $host = $config['host'];
+
+        $data = [
+            'clientID' => $config['appid'],
+            'passwd'   => $config['appkey'],
+            'module'   => $module,
+            'func'     => $function,
+            'args'     => serialize([$params])
+        ];
+        $data = http_build_query($data);
+        $ch = curl_init();
+        curl_setopt ($ch, CURLOPT_HEADER, 0);
+        curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt ($ch, CURLOPT_TIMEOUT, $timeout);
+        curl_setopt ($ch, CURLOPT_FRESH_CONNECT, 0);
+        curl_setopt ($ch, CURLOPT_FORBID_REUSE, 0);
+        curl_setopt ($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_0 );
+        curl_setopt ($ch, CURLOPT_URL, $host);
+        curl_setopt ($ch, CURLOPT_POSTFIELDS, $data);
+        $result = curl_exec($ch);
+
+        $result = json_decode(iconv("gbk", "utf-8//ignore", $result), true);
+        return $result;
+    }
+}

@@ -5,7 +5,6 @@ namespace App\Models\Admin;
 /**
  * 权限用户(组)关系表模型
  *
- * @author jiang
  */
 class Access extends Base
 {
@@ -33,7 +32,7 @@ class Access extends Base
     /**
      * 取得用户的权限信息
      * 
-     * @param intval $userId
+     * @param int $userId
      * @return array
      */
     public function getUserAccessPermission($userId)
@@ -48,7 +47,7 @@ class Access extends Base
     /**
      * 取得用户组的权限信息
      * 
-     * @param intval $groupId
+     * @param int $groupId
      * @return array
      */
     public function getGroupAccessPermission($groupId)
@@ -64,9 +63,9 @@ class Access extends Base
      * 设置用户或用户组的权限
      * 
      * @param array $data 所需要插入的信息
-     * @param intval $id 用户（组）的ID
-     * @param intval $allArr 需要删除的权限ID集
-     * @param intval $type 1为用户组，2为用户
+     * @param int $id 用户（组）的ID
+     * @param int $allArr 需要删除的权限ID集
+     * @param int $type 1为用户组，2为用户
      * @return boolean true|false
      */
     public function setPermission(array $data, $id, $allArr, $type)

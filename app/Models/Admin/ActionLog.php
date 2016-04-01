@@ -5,7 +5,6 @@ namespace App\Models\Admin;
 /**
  * 操作日志表模型
  *
- * @author jiang
  */
 class ActionLog extends Base
 {
@@ -21,7 +20,7 @@ class ActionLog extends Base
      *
      * @var string
      */
-    protected $fillable = array('id', 'username', 'user_id', 'ip', 'ip_adress', 'add_time', 'realname', 'content');
+    protected $fillable = array('id', 'username', 'user_id', 'ip', 'ip_address', 'add_time', 'realname', 'content');
     
     /**
      * 增加操作日志

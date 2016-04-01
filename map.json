@@ -1,0 +1,30 @@
+{
+  "header":{
+    "path":"admin/widget/header.blade.php",
+    "releaseTo": "./resources/views/admin/widget/"
+  },
+  "footer":{
+    "path":"admin/widget/footer.blade.php",
+    "releaseTo": "./resources/views/admin/widget/"
+  },
+  "login":{
+    "path":"admin/login/index.blade.php",
+    "releaseTo": "./resources/views/admin/login/",
+    "dependencies": {
+      "jquery": "1.11.1",
+      "crypto.js": "3.2.1-1",
+      "bootstrap": "3.1.1",
+      "font-awesome": "fontawesome#^4.5.0"
+    },
+    "overrides": {
+      "crypto.js" : {
+        "main": ["./components/md5.js"]
+      },
+      "font-awesome": {
+        "main": [
+          "css/font-awesome.css"
+        ]
+      }
+    }
+  }
+}

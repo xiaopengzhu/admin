@@ -5,7 +5,6 @@ namespace App\Models\Admin;
 /**
  * 权限表模型
  *
- * @author jiang
  */
 class Permission extends Base
 {
@@ -79,7 +78,7 @@ class Permission extends Base
     /**
      * 取得指定ID权限功能信息
      * 
-     * @param intval $id 权限功能的ID
+     * @param int $id 权限功能的ID
      * @return array
      */
     public function getOnePermissionById($id)

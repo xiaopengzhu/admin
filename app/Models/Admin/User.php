@@ -93,7 +93,7 @@ class User extends Base
     /**
      * 取得指定ID用户信息
      * 
-     * @param intval $id 用户的ID
+     * @param int $id 用户的ID
      * @return array
      */
     public function getOneUserById($id)
@@ -131,7 +131,7 @@ class User extends Base
     /**
      * 取得指定ID组的用户信息
      * 
-     * @param intval $ids 用户的ID
+     * @param int $ids 用户的ID
      * @return array
      */
     public function getUserInIds($ids)

@@ -19,7 +19,7 @@
               ?>
               <div id="zTree-container" class="ztree"></div>
               <script type="text/javascript">
-                var __zTree_Node = <?php echo $zTree_Node; ?>;
+                cacheData.__zTree_Node = <?php echo $zTree_Node; ?>;
                 var __setting = {
                   check: {
                     enable: true,
@@ -33,7 +33,7 @@
                 };
                 $(document).ready(function(){
 
-                  $.fn.zTree.init($("#zTree-container"), __setting, __zTree_Node);
+                  $.fn.zTree.init($("#zTree-container"), __setting, cacheData.__zTree_Node);
 
                   //获取所有选中节点的值
                   function getCheckedAll() {

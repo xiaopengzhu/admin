@@ -48,12 +48,3 @@
         <?php endforeach;?>
     </ul>
 </div>
-<script type="text/javascript">
-    $(document).ready(function () {
-        $(document).on('click', '.content-menu-button', function(){
-            var nav_href = $(this).attr('data-href');
-            window.location.href = nav_href;
-        });
-        
-    });
-</script>

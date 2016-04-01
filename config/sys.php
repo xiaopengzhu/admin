@@ -25,5 +25,12 @@ return [
         ['module' => 'foundation', 'class' => 'index', 'function' => '*'],
         ['module' => 'foundation', 'class' => 'user', 'function' => ['mpassword']],
         ['module' => 'foundation', 'class' => 'upload', 'function' => ['process']],
-    ]
+    ],
+
+    //易班基础 appid, appkey
+    'yiban_base' => [
+        'host' => 'http://10.21.3.89/',
+        'appid' => 'yiban.cn',
+        'appkey' => '7622f0d078cf468395336320c3cf35a1'
+    ],
 ];

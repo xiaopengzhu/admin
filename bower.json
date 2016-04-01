@@ -1,0 +1,52 @@
+{
+  "name": "newWifi",
+  "description": "",
+  "main": "",
+  "authors": [
+    "~"
+  ],
+  "license": "MIT",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "./public/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "1.11.1",
+    "bootstrap": "3.1.1",
+    "artDialog": "^6.0.4",
+    "font-awesome": "fontawesome#^4.5.0",
+    "crypto.js": "^3.1.2-1",
+    "jquery.cookie": "jquery-cookie#^1.4.1",
+    "blockUI": "blockui#*",
+    "ztree_v3": "^3.5.22"
+  },
+  "overrides": {
+    "artDialog": {
+      "main": [
+        "css/ui-dialog.css",
+        "dist/dialog-plus.js"
+      ]
+    },
+    "font-awesome": {
+      "main": [
+        "css/font-awesome.css"
+      ]
+    },
+    "ztree_v3": {
+      "main": [
+        "css/zTreeStyle/zTreeStyle.css",
+        "js/jquery.ztree.core.js",
+        "js/jquery.ztree.excheck.js"
+      ]
+    }
+  },
+  "resolutions": {
+    "font-awesome": "^4.5.0"
+  }
+}

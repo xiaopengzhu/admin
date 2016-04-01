@@ -13,7 +13,35 @@
 
 </font>
 
-*2015.06.18* v3.5.18
+
+*2016.03.01* v3.5.22
+   * 【修改】metro Demo 的样式错误
+   * 【修改】增加 <a> 的 padding 后， 导致 setting.edit.drag.inner 无效
+
+*2016.02.17* v3.5.21
+   * 【修改】zTree js 文件名 （为了便于发布到 https://cdnjs.com/）
+
+*2016.01.20* v3.5.20
+   * 【修改】checkAllNodes() 方法不处理 (chkDisabled = true) 的父节点的子节点的 bug
+
+*2015.12.04* v3.5.19.3
+   * 【修改】为避免定位节点时抢焦点， 使用 scrollIntoView 方法替换之前的 focus 方法（对于IE6等旧浏览器仍然使用 focus方法）
+
+*2015.11.15* v3.5.19.2
+   * 【增加】给节点名称的 span 标签增加 class，便于用户设置 css
+
+*2015.10.26* v3.5.19.1
+   * 【修改】addNodes 新方法 导致 拖拽节点时报错
+   * 【增加】treeNode.getIndex 方法，可以快速获取 节点在 子节点中的位置
+   * 【增加】treeNode.getPath 方法，可以快速获取 节点的所有父节点
+
+*2015.10.22* v3.5.19
+   * 【修改】addNodes 方法支持直接添加新节点到任意位置 addNodes(parentNode, index, newNodes, isSilent)
+   * 【修改】selectstart 事件未解绑导致的内存泄漏
+
+*2015.08.26* v3.5.18
+   * 【修改】onSelected/onUnSelected 回调参数，由 (event, treeId, node) 修改为 （treeId, node）；另外 删除 已选择的节点时，也会触发 onUnSelected 回调
+   * 【增加】Allow nodes to specify their own icon using an 'icon' property of the 'setting.data.key'
    * 【增加】metro 风格 demo
    * 【增加】awesome 风格 demo
    * 【增加】回调 onSelected / onUnSelected

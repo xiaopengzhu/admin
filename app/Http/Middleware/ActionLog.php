@@ -45,6 +45,9 @@ class ActionLog
         $managerObj->handler();
     }
 
+    /**
+     * init
+     */
     private function initLogMark()
     {
         $mark = new Mark();

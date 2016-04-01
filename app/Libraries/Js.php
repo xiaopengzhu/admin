@@ -7,7 +7,6 @@
  * visit this the website bellow for more information.
  * http://www.zentao.net/
  *
- * lasted modify by jiang at 2014-9-8
  * 
  * @package Libraries
  */
