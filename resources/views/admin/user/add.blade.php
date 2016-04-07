@@ -41,11 +41,22 @@
                     </div>
                     <div class="form-group input-group-sm">
                       <label>用户组</label>
-                      <select name="data[group_id]" id="DropDownTimezone" class="form-control">
+                      <select name="data[group_id]" class="form-control">
                         <?php if(isset($groupList) and is_array($groupList)): ?>
                           <?php foreach($groupList as $key => $value): ?>
                               <option value="<?php echo $value['id'];?>" <?php if(isset($userInfo['group_id']) && $userInfo['group_id'] == $value['id']) echo 'selected'; ?>><?php echo $value['group_name'];?></option>
                           <?php endforeach; ?>
+                        <?php endif;?>
+                      </select>
+                    </div>
+                    <div class="form-group input-group-sm">
+                      <label>归属机构</label>
+                      <select name="data[agency_id]" class="form-control">
+                        <?php if(isset($agencyList) and is_array($agencyList)): ?>
+                        <option value="0">无</option>
+                        <?php foreach($agencyList as $key => $value): ?>
+                        <option value="<?php echo $value['id'];?>" <?php if(isset($userInfo['agency_id']) && $userInfo['agency_id'] == $value['id']) echo 'selected'; ?>><?php echo $value['name'];?></option>
+                        <?php endforeach; ?>
                         <?php endif;?>
                       </select>
                     </div>

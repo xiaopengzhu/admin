@@ -1,31 +1,31 @@
 <?php
 
-namespace App\Services\Admin\Hotspot;
+namespace App\Services\Admin\Agency;
 
 use Lang;
-use App\Models\Admin\Hotspot as HotspotModel;
-use App\Services\Admin\Hotspot\Validate\Hotspot as HotspotValidate;
+use App\Models\Admin\Agency as AgencyModel;
+use App\Services\Admin\Agency\Validate\Agency as AgencyValidate;
 use App\Services\BaseProcess;
 
 /**
- * 热点
+ * 机构
  *
  */
 class Process extends BaseProcess
 {
     /**
-     * 热点模型
+     * 机构模型
      * 
      * @var object
      */
-    private $hotspotModel;
+    private $agencyModel;
 
     /**
-     * 热点表单验证对象
+     * 机构表单验证对象
      * 
      * @var object
      */
-    private $hotspotValidate;
+    private $agencyValidate;
 
     /**
      * 初始化
@@ -34,8 +34,8 @@ class Process extends BaseProcess
      */
     public function __construct()
     {
-        if( ! $this->hotspotModel) $this->hotspotModel = new HotspotModel();
-        if( ! $this->hotspotValidate) $this->hotspotValidate = new HotspotValidate();
+        if( ! $this->agencyModel) $this->agencyModel = new AgencyModel();
+        if( ! $this->agencyValidate) $this->agencyValidate = new AgencyValidate();
     }
 
     /**
@@ -45,10 +45,10 @@ class Process extends BaseProcess
      * @return boolean true|false
      * @access public
      */
-    public function add(\App\Services\Admin\Hotspot\Param\HotspotSave $data)
+    public function add(\App\Services\Admin\Agency\Param\AgencySave $data)
     {
-        if( ! $this->hotspotValidate->add($data)) return $this->setErrorMsg($this->hotspotValidate->getErrorMessage());
-        if($this->hotspotModel->add($data->toArray()) !== false) return true;
+        if( ! $this->agencyValidate->add($data)) return $this->setErrorMsg($this->agencyValidate->getErrorMessage());
+        if($this->agencyModel->add($data->toArray()) !== false) return true;
         return $this->setErrorMsg(Lang::get('common.action_error'));
     }
 
@@ -63,7 +63,7 @@ class Process extends BaseProcess
     {
         if( ! is_array($ids)) return false;
 
-        if($this->hotspotModel->del($ids) !== false) {
+        if($this->agencyModel->del($ids) !== false) {
             return true;
         }
         return $this->setErrorMsg(Lang::get('common.action_error'));
@@ -76,20 +76,22 @@ class Process extends BaseProcess
      * @return boolean true|false
      * @access public
      */
-    public function edit(\App\Services\Admin\Hotspot\Param\HotspotSave $data)
+    public function edit(\App\Services\Admin\Agency\Param\AgencySave $data)
     {
         if( ! isset($data->id)) {
             return $this->setErrorMsg(Lang::get('common.action_error'));
         }
 
-        $id = intval(url_param_decode($data->id)); unset($data->id);
+        $id = intval(url_param_decode($data->id));
         if( ! $id) return $this->setErrorMsg(Lang::get('common.illegal_operation'));
 
-        if( ! $this->hotspotValidate->edit($data)) {
-            return $this->setErrorMsg($this->hotspotValidate->getErrorMessage());
+        if( ! $this->agencyValidate->edit($data)) {
+            return $this->setErrorMsg($this->agencyValidate->getErrorMessage());
         }
 
-        if($this->hotspotModel->edit($data->toArray(), $id) === false) {
+        unset($data->id);
+
+        if($this->agencyModel->edit($data->toArray(), $id) === false) {
             return $this->setErrorMsg(Lang::get('common.action_error'));
         }
 

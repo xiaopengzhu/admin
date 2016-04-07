@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Foundation;
 
+use App\Models\Admin\Agency;
 use App\Models\Admin\Group;
 use App\Models\Admin\User;
 use Request, Lang, Session;
@@ -49,9 +50,10 @@ class UserController extends Controller
         $isSuperSystemManager = with(new Acl())->isSuperSystemManager();
         if($isSuperSystemManager) $groupInfo['level'] = 0;
         $groupList = $groupModel->getGroupLevelLessThenCurrentUser($groupInfo['level']);
+        $agencyList = with(new Agency())->getAgencyList();
         $formUrl = R('common', 'foundation.user.add');
         return view('admin.user.add',
-            compact('groupList', 'formUrl')
+            compact('groupList', 'formUrl', 'agencyList')
         );
     }
     
@@ -131,9 +133,11 @@ class UserController extends Controller
         if($isSuperSystemManager) $groupInfo['level'] = 0;
         $groupList = $groupModel->getGroupLevelLessThenCurrentUser($groupInfo['level']);
 
+        $agencyList = with(new Agency())->getAgencyList();
+
         $formUrl = R('common', 'foundation.user.edit');
         return view('admin.user.add',
-            compact('userInfo', 'formUrl', 'id', 'groupList')
+            compact('userInfo', 'formUrl', 'id', 'groupList', 'agencyList')
         );
     }
     

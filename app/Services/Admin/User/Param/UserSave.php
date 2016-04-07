@@ -26,6 +26,8 @@ class UserSave extends AbstractParam
 
     protected $id;
 
+    protected $agency_id;
+
     public function setName($name)
     {
         $this->name = $this->attributes['name'] = $name;
@@ -71,6 +73,12 @@ class UserSave extends AbstractParam
     public function setId($id)
     {
         $this->id = $this->attributes['id'] = $id;
+        return $this;
+    }
+
+    public function setAgencyId($agency_id)
+    {
+        $this->agency_id = $this->attributes['agency_id'] = $agency_id;
         return $this;
     }
     

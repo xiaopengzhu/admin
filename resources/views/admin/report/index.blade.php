@@ -11,33 +11,25 @@
                   <form method="get" action="" class="form-inline">
                       <div class="form-group input-group-sm f-g">
                           <label for="search-username">学校选择</label>
-                          <select class="form-control" name="school_id">
-                              <option value="">请选择</option>
-                              <?php foreach($school_list as $item) :?>
-                              <option value="{{$item->id}}" <?php if(isset($data['school_id']) && $data['school_id'] == $item->id):?>selected<?php endif;?>>{{$item->name}}</option>
-                              <?php endforeach;?>
+                          <select class="form-control" name="agency_id" id="agency_id">
                           </select>
                       </div>
 
                       <div class="form-group input-group-sm f-g">
                           <label for="search-realname">热点选择</label>
-                          <select class="form-control" name="hotspot_id">
-                              <option value="">请选择</option>
-                              <?php foreach($hotspot_list as $item) :?>
-                              <option value="{{$item->id}}" <?php if(isset($data['hotspot_id']) && $data['hotspot_id'] == $item->id):?>selected<?php endif;?>>{{$item->name}}</option>
-                              <?php endforeach;?>
+                          <select class="form-control" name="hotspot_id" id="hotspot_id">
                           </select>
                       </div>
 
                       <div class="form-group input-group-sm f-g">
-                          <label for="search-time">登录时间</label>
+                          <label for="search-time">日期选择</label>
                           <input type="text" value="<?php if(isset($data['timeFrom'])) echo $data['timeFrom']; ?>" name="time_from" id="search-time" class="form-control">
                           到
                           <input type="text" value="<?php if(isset($data['timeTo'])) echo $data['timeTo']; ?>" name="time_to" id="search-time-to" class="form-control">
                       </div>
 
                       <div class="form-group btn-group-sm f-g">
-                          <input class="btn btn-primary" type="submit" value="查询日志">
+                          <input class="btn btn-primary" type="submit" value="查 询">
                       </div>
                   </form>
               </div>
@@ -69,7 +61,7 @@
                             <tr>
                               <td><?php echo $value['id']; ?></td>
                               <td><?php echo $value['hotspot']['name']; ?></td>
-                              <td><?php echo $value['school']['name']; ?></td>
+                              <td><?php echo $value['agency']['name']; ?></td>
                               <td><?php if($value['type']==1) echo 'IOS'; elseif($value['type']==2) echo 'Android'; else echo 'WEB'; ?></td>
                               <td><?php echo $value['ybuser_id']; ?></td>
                               <td><?php echo $value['ybuser_name']; ?></td>
@@ -97,7 +89,8 @@
     <script type="text/javascript">
         $('#search-time').datetimepicker({
             language:  'zh-CN',
-            format: "yyyy-mm-dd hh:ii:ss",
+            format: "yyyy-mm-dd",
+            minView: "month",
             weekStart: 1,
             todayBtn:  1,
             autoclose: 1,
@@ -108,7 +101,8 @@
 
         $('#search-time-to').datetimepicker({
             language:  'zh-CN',
-            format: "yyyy-mm-dd hh:ii:ss",
+            format: "yyyy-mm-dd",
+            minView: "month",
             weekStart: 1,
             todayBtn:  1,
             autoclose: 1,
@@ -119,10 +113,41 @@
     </script>
     <script src="<?php echo loadStatic('/lib/chartjs/Chart.min.js'); ?>" type="text/javascript"></script>
     <script>
+        var agencyData = JSON.parse('<?php echo $agencyData; ?>');
         var lineData = JSON.parse('<?php echo $lineData; ?>');
         var pieData = JSON.parse('<?php echo $pieData; ?>');
         var pie  = new Chart(document.getElementById("chart1").getContext("2d")).Doughnut(pieData);
         var line = new Chart(document.getElementById("chart2").getContext("2d")).Line(lineData);
+
+        $(document).ready(function(){
+            $('#agency_id').change(function(){
+                var substr = '<option value="0">全部</option>';
+                var id = $(this).find("option:selected").val();
+                $.each(agencyData, function(key, value){
+                    if (value.id == id) {
+                        $.each(value.hotspots, function(k, v){
+                            substr += '<option value="' + v.id + '">' + v.name + '</option>';
+                        });
+                    }
+                });
+                $('#hotspot_id').html(substr);
+            });
+
+            //初始化级连下拉
+            var str = '<option value="0">全部</option>';
+            $.each(agencyData, function(key, value){
+                str+= '<option value="'+value.id+'">'+value.name+'</option>';
+            });
+            $('#agency_id').html(str);
+
+            <?php if(isset($data['agency_id'])):?>
+            $('#agency_id').val({{$data['agency_id']}}).trigger('change');
+            <?php endif;?>
+            <?php if(isset($data['hotspot_id'])):?>
+            $('#hotspot_id').val({{$data['hotspot_id']}});
+            <?php endif;?>
+        });
+
     </script>
 
 <?php echo widget('Admin.Common')->htmlend(); ?>

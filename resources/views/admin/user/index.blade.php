@@ -16,6 +16,7 @@
                             <th>真实姓名</th>
                             <th>用户名</th>
                             <th>用户组</th>
+                            <th>归属机构</th>
                             <th>电话</th>
                             <th>最后登录</th>
                             <th>操作</th>
@@ -27,6 +28,7 @@
                               <td><?php echo $value['realname']; ?></td>
                               <td><?php echo $value['name']; ?></td>
                               <td><?php echo $value['group_name']; ?></td>
+                              <td><?php echo $value['agency']['name']; ?></td>
                               <td><?php echo $value['mobile']; ?></td>
                               <td><?php echo date('Y-m-d H', $value['last_login_time']); ?></td>
                               <td>

@@ -20,9 +20,19 @@ class User extends Base
      * @var string
      */
     protected $fillable = array('id', 'name', 'password', 'group_id', 'realname', 'token',
-                                'add_time', 'modify_time', 'mobile', 'status', 'mark',
+                                'add_time', 'modify_time', 'mobile', 'status', 'mark', 'agency_id',
                                 'last_login_ip', 'last_login_time'
                             );
+
+    /**
+     * 自我关联
+     */
+    public function agency()
+    {
+        return $this->belongsTo('App\Models\Admin\Agency', 'agency_id', 'id');
+    }
+
+    /**
 
     /**
      * 取得用户的信息，根据用户名

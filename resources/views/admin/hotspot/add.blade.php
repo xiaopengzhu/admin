@@ -22,8 +22,8 @@
                     </div>
                     <div class="form-group input-group-sm">
                       <label>所属学校</label>
-                      <input type="hidden" name="data[school_id]" value="<?php if(isset($hotspotInfo['school_id'])) echo $hotspotInfo['school_id']; elseif(isset($school_id)) echo $school_id; ?>">
-                      <input type="text" disabled value="<?php if(isset($school_name)) echo $school_name;  ?>" class="form-control" placeholder="必填">
+                      <input type="hidden" name="data[agency_id]" value="<?php if(isset($hotspotInfo['agency_id'])) echo $hotspotInfo['agency_id']; elseif(isset($agency_id)) echo $agency_id; ?>">
+                      <input type="text" disabled value="<?php if(isset($agency_name)) echo $agency_name;  ?>" class="form-control" placeholder="必填">
                     </div>
                     <div class="form-group input-group-sm">
                       <label>热点状态</label>

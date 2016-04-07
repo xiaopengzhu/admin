@@ -1,22 +1,26 @@
 <?php
 
-namespace App\Services\Admin\Hotspot\Param;
+namespace App\Services\Admin\Agency\Param;
 
 use App\Services\AbstractParam;
 
 /**
- * 热点相关的参数容器
+ * 机构有关的参数容器
  *
  */
-class HotspotSave extends AbstractParam
+class AgencySave extends AbstractParam
 {
     protected $name;
 
     protected $status;
 
-    protected $agency_id;
+    protected $pid;
 
     protected $id;
+
+    protected $type;
+
+    protected $yb_id;
 
     public function setName($name)
     {
@@ -36,10 +40,21 @@ class HotspotSave extends AbstractParam
         return $this;
     }
 
-    public function setAgencyId($agency_id)
+    public function setType($type)
     {
-        $this->agency_id = $this->attributes['agency_id'] = $agency_id;
+        $this->type = $this->attributes['type'] = $type;
         return $this;
     }
 
+    public function setPid($pid)
+    {
+        $this->pid = $this->attributes['pid'] = $pid;
+        return $this;
+    }
+
+    public function setYbId($yb_id)
+    {
+        $this->yb_id = $this->attributes['yb_id'] = $yb_id;
+        return $this;
+    }
 }

@@ -3,38 +3,52 @@
 namespace App\Models\Admin;
 
 /**
- * 热点模型
+ * 机构模型
  *
  */
-class Hotspot extends Base
+class Agency extends Base
 {
     /**
      * 表名
      *
      * @var string
      */
-    protected $table = 'hotspot';
+    protected $table = 'agency';
+
+    /**
+     * 学校类型
+     */
+    const TYPE_SCHOOL = 1;
+
+    /**
+     * 省厅类型
+     */
+    const TYPE_ST = 2;
+
+    /**
+     * 启用状态
+     */
+    const ON = 1;
+
+    /**
+     * 停用状态
+     */
+    const OFF = 0;
 
     /**
      * 可以被集体附值的表的字段
      *
      * @var string
      */
-    protected $fillable = array('id', 'name', 'agency_id', 'status');
-
-    /**
-     * 状态
-     */
-    const ON = 1;
-    const OFF = 0;
+    protected $fillable = array('id', 'type', 'name', 'status');
 
 
     /**
-     * 与agency表关联
+     * 自我关联
      */
-    public function agency()
+    public function parent()
     {
-        return $this->belongsTo('App\Models\Admin\Agency');
+        return $this->belongsTo('App\Models\Admin\Agency', 'pid', 'id');
     }
     
     /**
@@ -61,7 +75,7 @@ class Hotspot extends Base
     /**
      * 取得指定ID
      * 
-     * @param intval $id
+     * @param int $id
      * @return array
      */
     public function getById($id)
@@ -111,6 +125,26 @@ class Hotspot extends Base
     {
         if( ! is_array($ids)) return false;
         return $this->whereIn('id', $ids)->get()->toArray();
+    }
+
+    /**
+     * 获取省厅列表
+     * @return array
+     */
+    public function getStList()
+    {
+        return $this->where('pid', 0)
+                    ->where('type', 2)
+                    ->where('status', self::ON)
+                    ->get()->toArray();
+    }
+
+    /**
+     * 获取可选机构列表
+     */
+    public function getAgencyList()
+    {
+        return $this->where('status', self::ON)->get()->toArray();
     }
 
 }

@@ -2,6 +2,8 @@
 
 namespace App\Models\Admin;
 
+use App\Services\Admin\SC;
+
 /**
  * 报表模型
  *
@@ -20,14 +22,14 @@ class Report extends Base
      *
      * @var string
      */
-    protected $fillable = array('id', 'hotspot_id', 'school_id', 'type', 'ybuser_id', 'ybuser_name', 'login_time', 'status', 'desc');
+    protected $fillable = array('id', 'hotspot_id', 'agency_id', 'type', 'ybuser_id', 'ybuser_name', 'login_time', 'status', 'desc');
 
     /**
-     * 与school表关联
+     * 与agency表关联
      */
-    public function school()
+    public function agency()
     {
-        return $this->belongsTo('App\Models\Admin\School');
+        return $this->belongsTo('App\Models\Admin\Agency');
     }
 
     /**
@@ -46,7 +48,7 @@ class Report extends Base
     public function getAllByPage($data)
     {
         $currentQuery = $this->orderBy('id', 'desc');
-        if(isset($data['school_id']) and ! empty($data['school_id'])) $currentQuery->where('school_id', $data['school_id']);
+        if(is_array($data['agency_id']) and count($data['agency_id'])>0) $currentQuery->whereIn('agency_id', $data['agency_id']);
         if(isset($data['hotspot_id']) and ! empty($data['hotspot_id'])) $currentQuery->where('hotspot_id', $data['hotspot_id']);
         if(isset($data['timeFrom'], $data['timeTo']) and ! empty($data['timeFrom']) and ! empty($data['timeTo']))
         {
@@ -78,7 +80,7 @@ class Report extends Base
         $total = $this->count();
 
         $currentQuery = $this->orderBy('id', 'desc');
-        if(isset($data['school_id']) and ! empty($data['school_id'])) $currentQuery->where('school_id', $data['school_id']);
+        if(is_array($data['agency_id']) and count($data['agency_id'])>0) $currentQuery->whereIn('agency_id', $data['agency_id']);
         if(isset($data['hotspot_id']) and ! empty($data['hotspot_id'])) $currentQuery->where('hotspot_id', $data['hotspot_id']);
         if(isset($data['timeFrom'], $data['timeTo']) and ! empty($data['timeFrom']) and ! empty($data['timeTo']))
         {
@@ -106,7 +108,7 @@ class Report extends Base
     public function getLineData($data)
     {
         $currentQuery = $this->orderBy('id', 'desc');
-        if(isset($data['school_id']) and ! empty($data['school_id'])) $currentQuery->where('school_id', $data['school_id']);
+        if(is_array($data['agency_id']) and count($data['agency_id'])>0) $currentQuery->whereIn('agency_id', $data['agency_id']);
         if(isset($data['hotspot_id']) and ! empty($data['hotspot_id'])) $currentQuery->where('hotspot_id', $data['hotspot_id']);
         if(isset($data['timeFrom'], $data['timeTo']) and ! empty($data['timeFrom']) and ! empty($data['timeTo']))
         {
@@ -141,6 +143,46 @@ class Report extends Base
         ];
 
         return json_encode($data);
+    }
+
+    /**
+     * 获取报表可用机构热点信息
+     */
+    public function getAgencyData()
+    {
+        $user = SC::getLoginSession();
+        $schools = [];
+
+        if ($agency_id = $user->agency_id) {//用户有归属机构
+            //获取归属机构类型
+            $agency = Agency::find($agency_id)->toArray();
+            if ($agency) {
+                if ($agency['type'] == Agency::TYPE_ST) {//省厅
+                    //获取下属学校ID
+                    $schools = with(new Agency())->where('pid', $agency_id)
+                                ->where('status', Agency::ON)
+                                ->where('type', Agency::TYPE_SCHOOL)
+                                ->get()
+                                ->toArray();
+                } elseif($agency['type'] == Agency::TYPE_SCHOOL) {//学校
+                    $schools[] = $agency;
+                }
+            }
+        } else {//用户无归属机构
+            $schools = with(new Agency())->where('status', Agency::ON)
+                        ->where('type', Agency::TYPE_SCHOOL)
+                        ->get()
+                        ->toArray();
+        }
+
+        //拉取学校下的热点
+        foreach($schools as $k => $v) {
+            $schools[$k]['hotspots'] = with(new Hotspot())->where('agency_id', $v['id'])
+                                        ->where('status', Hotspot::ON)
+                                        ->get()->toArray();
+        }
+
+        return $schools;
     }
 
 }

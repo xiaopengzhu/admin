@@ -3,18 +3,17 @@
 namespace App\Http\Controllers\Admin\Foundation;
 
 use App\Http\Controllers\Admin\Controller;
-use App\Models\Admin\Hotspot as HotspotModel;
 use App\Models\Admin\Agency as AgencyModel;
 use Request, Lang, Session;
-use App\Services\Admin\Hotspot\Process as HotspotProcess;
-use App\Services\Admin\Hotspot\Param\HotspotSave;
+use App\Services\Admin\Agency\Process as AgencyProcess;
+use App\Services\Admin\Agency\Param\AgencySave;
 use App\Libraries\Js;
 
 /**
- * 热点管理
+ * 机构管理
  *
  */
-class HotspotController extends Controller
+class AgencyController extends Controller
 {
     /**
      * 列表
@@ -24,9 +23,9 @@ class HotspotController extends Controller
     public function index()
     {
         Session::flashInput(['http_referer' => Request::fullUrl()]);
-        $hotspotlist = with(new HotspotModel())->getAllByPage();
-        $page = $hotspotlist->setPath('')->appends(Request::all())->render();
-        return view('admin.hotspot.index', compact('hotspotlist', 'page'));
+        $agencylist = with(new AgencyModel())->getAllByPage();
+        $page = $agencylist->setPath('')->appends(Request::all())->render();
+        return view('admin.agency.index', compact('agencylist', 'page'));
     }
     
     /**
@@ -38,19 +37,9 @@ class HotspotController extends Controller
     {
         if(Request::method() == 'POST') return $this->saveDatasToDatabase();
 
-        $agency_id = Request::input('id');
-        if( ! ($agency_id = (int)url_param_decode($agency_id)) ) {
-            return responseJson(Lang::get('common.action_error'));
-        }
-
-        $agency = AgencyModel::find($agency_id);
-        if (!$agency) {
-            return responseJson(Lang::get('agency.agency_not_found'));
-        }
-        $agency_name = $agency->name;
-
-        $formUrl = R('common', 'foundation.hotspot.add');
-        return view('admin.hotspot.add', compact('formUrl', 'agency_id', 'agency_name'));
+        $st_list = with(new AgencyModel())->getStList();
+        $formUrl = R('common', 'foundation.agency.add');
+        return view('admin.agency.add', compact('formUrl', 'st_list'));
     }
     
     /**
@@ -61,13 +50,13 @@ class HotspotController extends Controller
     private function saveDatasToDatabase()
     {
         $data = (array) Request::input('data');
-        $params = new HotspotSave();
+        $params = new AgencySave();
         $params->setAttributes($data);
 
-        $manager = new HotspotProcess();
+        $manager = new AgencyProcess();
         if($manager->add($params) !== false) {
             $this->setActionLog();
-            return Js::locate(R('common', 'foundation.hotspot.index'), 'parent');
+            return Js::locate(R('common', 'foundation.agency.index'), 'parent');
         }
 
         return Js::error($manager->getErrorMessage());
@@ -89,11 +78,11 @@ class HotspotController extends Controller
         }
 
         $id = array_map('intval', $id);
-        $hotspotInfos = with(new HotspotModel())->getInIds($id);
+        $agencyInfos = with(new AgencyModel())->getInIds($id);
 
-        $manager = new HotspotProcess();
+        $manager = new AgencyProcess();
         if($manager->del($id)) {
-            $this->setActionLog(['hotspotInfos' => $hotspotInfos]);
+            $this->setActionLog(['agencyInfos' => $agencyInfos]);
             return responseJson(Lang::get('common.action_success'), true);
         }
 
@@ -113,23 +102,20 @@ class HotspotController extends Controller
 
         Session::flashInput(['http_referer' => Session::getOldInput('http_referer')]);
         $id = Request::input('id');
-        $hotspotId = url_param_decode($id);
+        $agencyId = url_param_decode($id);
 
-        if( ! $hotspotId or ! is_numeric($hotspotId)) {
+        if( ! $agencyId or ! is_numeric($agencyId)) {
             return Js::error(Lang::get('common.illegal_operation'));
         }
 
-        $hotspotInfo = with(new HotspotModel())->getById($hotspotId);
-        if(empty($hotspotInfo)) return Js::error(Lang::get('hotspot.hotspot_not_found'));
+        $agencyInfo = with(new AgencyModel())->getById($agencyId);
+        if(empty($agencyInfo)) return Js::error(Lang::get('agency.agency_not_found'));
 
-        $agency_id = $hotspotInfo->agency_id;
-        $agency = AgencyModel::find($agency_id);
-        if(!$agency) return Js::error(Lang::get('agency.agency_not_found'));
-        $agency_name = $agency->name;
+        $st_list = with(new AgencyModel())->getStList();
 
-        $formUrl = R('common', 'foundation.hotspot.edit');
+        $formUrl = R('common', 'foundation.agency.edit');
 
-        return view('admin.hotspot.add', compact('hotspotInfo', 'formUrl', 'id', 'agency_name'));
+        return view('admin.agency.add', compact('agencyInfo', 'formUrl', 'id', 'st_list'));
     }
     
     /**
@@ -142,13 +128,13 @@ class HotspotController extends Controller
         $httpReferer = Session::getOldInput('http_referer');
         $data = (array) Request::input('data');
 
-        $params = new HotspotSave();
+        $params = new AgencySave();
         $params->setAttributes($data);
 
-        $manager = new HotspotProcess();
+        $manager = new AgencyProcess();
         if($manager->edit($params)) {
             $this->setActionLog();
-            $backUrl = ( ! empty($httpReferer)) ? $httpReferer : R('common', 'foundation.hotspot.index');
+            $backUrl = ( ! empty($httpReferer)) ? $httpReferer : R('common', 'foundation.agency.index');
             return Js::locate($backUrl, 'parent');
         }
         return Js::error($manager->getErrorMessage());

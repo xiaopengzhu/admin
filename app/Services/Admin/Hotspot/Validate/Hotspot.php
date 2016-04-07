@@ -6,7 +6,7 @@ use Validator, Lang;
 use App\Services\BaseValidate;
 
 /**
- * 学校表单验证
+ * 热点表单验证
  *
  */
 class Hotspot extends BaseValidate
@@ -22,14 +22,14 @@ class Hotspot extends BaseValidate
         $rules = array(
             'name' => 'required',
             'status' => 'required|numeric',
-            'school_id' => 'required|numeric'
+            'agency_id' => 'required|numeric'
         );
         
         // 自定义验证消息
         $messages = array(
             'name.required' => Lang::get('hotspot.hotspot_name_empty'),
             'status.required' => Lang::get('hotspot.hotspot_status_empty'),
-            'school_id.required' => Lang::get('hotspot.hotspot_school_id_empty'),
+            'agency_id.required' => Lang::get('hotspot.hotspot_agency_id_empty'),
         );
         
         //开始验证
